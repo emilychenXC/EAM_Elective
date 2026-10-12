@@ -4,10 +4,43 @@
   <meta charset="utf-8">
   <title>Course List</title>
 </head>
+<script>
+  function applyFilters() {
+    const sem = document.querySelector('input[name="semester"]:checked').value;
+    const typ = document.querySelector('input[name="type"]:checked').value;
+
+    document.querySelectorAll("#courses tbody tr").forEach(function (row) {
+      const semester = row.cells[3].textContent;  // 4th column: Semester
+      const type = row.cells[4].textContent;      // 5th column: Type
+
+      const semOk = (sem === "All") || semester.includes(sem);
+      const typOk = (typ === "All") || type.includes(typ);
+
+      row.hidden = !(semOk && typOk);
+    });
+  }
+
+  document.querySelectorAll('input[type="radio"]').forEach(function (button) {
+    button.addEventListener("change", applyFilters);
+  });
+</script>
+  
 <body>
 
   <h1>Course List</h1>
+<p>
+  <strong>Semester:</strong>
+  <label><input type="radio" name="semester" value="All" checked> All</label>
+  <label><input type="radio" name="semester" value="Fall"> Fall</label>
+  <label><input type="radio" name="semester" value="Spring"> Spring</label>
+</p>
 
+<p>
+  <strong>Type:</strong>
+  <label><input type="radio" name="type" value="All" checked> All</label>
+  <label><input type="radio" name="type" value="Required"> Required</label>
+  <label><input type="radio" name="type" value="Elective"> Elective</label>
+</p>
   <table id="courses" border="1">
     <thead>
       <tr>
