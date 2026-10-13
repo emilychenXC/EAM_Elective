@@ -2,45 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Course List</title>
+  <style>
+    body   { font-family: Arial, sans-serif; margin: 16px; color: #222; }
+    .filters { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 12px; }
+    fieldset { border: 1px solid #bbb; border-radius: 6px; padding: 8px 12px; }
+    legend { font-weight: bold; }
+    label  { margin-right: 12px; cursor: pointer; white-space: nowrap; }
+    table  { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; vertical-align: top; }
+    th     { background: #f0f0f0; }
+    #count { margin: 8px 0; font-style: italic; }
+  </style>
 </head>
-<script>
-  function applyFilters() {
-    const sem = document.querySelector('input[name="semester"]:checked').value;
-    const typ = document.querySelector('input[name="type"]:checked').value;
-
-    document.querySelectorAll("#courses tbody tr").forEach(function (row) {
-      const semester = row.cells[3].textContent;  // 4th column: Semester
-      const type = row.cells[4].textContent;      // 5th column: Type
-
-      const semOk = (sem === "All") || semester.includes(sem);
-      const typOk = (typ === "All") || type.includes(typ);
-
-      row.hidden = !(semOk && typOk);
-    });
-  }
-
-  document.querySelectorAll('input[type="radio"]').forEach(function (button) {
-    button.addEventListener("change", applyFilters);
-  });
-</script>
-  
 <body>
-
+ 
   <h1>Course List</h1>
-<p>
-  <strong>Semester:</strong>
-  <label><input type="radio" name="semester" value="All" checked> All</label>
-  <label><input type="radio" name="semester" value="Fall"> Fall</label>
-  <label><input type="radio" name="semester" value="Spring"> Spring</label>
-</p>
-
-<p>
-  <strong>Type:</strong>
-  <label><input type="radio" name="type" value="All" checked> All</label>
-  <label><input type="radio" name="type" value="Required"> Required</label>
-  <label><input type="radio" name="type" value="Elective"> Elective</label>
-</p>
+ 
+  <div class="filters">
+    <fieldset>
+      <legend>Semester</legend>
+      <label><input type="radio" name="semester" value="All" checked> All</label>
+      <label><input type="radio" name="semester" value="Fall"> Fall</label>
+      <label><input type="radio" name="semester" value="Spring"> Spring</label>
+      <label><input type="radio" name="semester" value="Fall and Spring"> Fall and Spring</label>
+    </fieldset>
+ 
+    <fieldset>
+      <legend>Type</legend>
+      <label><input type="radio" name="type" value="All" checked> All</label>
+      <label><input type="radio" name="type" value="Required"> Required</label>
+      <label><input type="radio" name="type" value="NSOE Elective"> NSOE Elective</label>
+      <label><input type="radio" name="type" value="Non-NSOE Elective"> Non-NSOE Elective</label>
+    </fieldset>
+  </div>
+ 
+  <p id="count" aria-live="polite"></p>
+  
   <table id="courses" border="1">
     <thead>
       <tr>
@@ -73,7 +72,7 @@
         <td>NSOE Elective</td>
         <td>Every Year</td>
         <td>Spring 2026</td>
-        <td>Yes</td>
+        <td><a href="https://canvas.duke.edu/files/5601664" target="_blank">Yes</a></td>
       </tr> 
        <tr>
         <td>ENVIRON 559</td>
