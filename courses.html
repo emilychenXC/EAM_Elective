@@ -317,5 +317,41 @@
     </tbody>
   </table>
 
+ <script>
+    function applyFilters() {
+      var sem = document.querySelector('input[name="semester"]:checked').value;
+      var typ = document.querySelector('input[name="type"]:checked').value;
+ 
+      var rows = document.querySelectorAll("#courses tbody tr");
+      var shown = 0;
+ 
+      rows.forEach(function (row) {
+        // Column positions start at 0: Semester is the 4th column, Type is the 5th
+        var semester = row.cells[3].textContent.trim();
+        var type = row.cells[4].textContent.trim();
+ 
+        // Exact match, so "Fall" does not also pick up "Fall and Spring"
+        var semOk = (sem === "All") || (semester === sem);
+        var typOk = (typ === "All") || (type === typ);
+ 
+        if (semOk && typOk) {
+          row.style.display = "";
+          shown++;
+        } else {
+          row.style.display = "none";
+        }
+      });
+ 
+      document.getElementById("count").textContent =
+        "Showing " + shown + " of " + rows.length + " courses";
+    }
+ 
+    document.querySelectorAll('input[type="radio"]').forEach(function (button) {
+      button.addEventListener("change", applyFilters);
+    });
+ 
+    applyFilters();
+  </script>
+ 
 </body>
 </html>
