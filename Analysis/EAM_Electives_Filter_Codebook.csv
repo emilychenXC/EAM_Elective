@@ -1,0 +1,32 @@
+keyword,category,active,case_sensitive
+quantitative,General methods,TRUE,FALSE
+quantitive,General methods,TRUE,FALSE
+calculation,General methods,TRUE,FALSE
+calculations,General methods,TRUE,FALSE
+computational,General methods,TRUE,FALSE
+numerical,General methods,TRUE,FALSE
+statistics,Statistics,TRUE,FALSE
+statistical,Statistics,TRUE,FALSE
+probability,Statistics,TRUE,FALSE
+regression,Statistics,TRUE,FALSE
+econometrics,Statistics,TRUE,FALSE
+inference,Statistics,TRUE,FALSE
+hypothesis testing,Statistics,TRUE,FALSE
+model,Modeling,TRUE,FALSE
+models,Modeling,TRUE,FALSE
+modeling,Modeling,TRUE,FALSE
+modelling,Modeling,TRUE,FALSE
+simulation,Modeling,TRUE,FALSE
+optimization,Modeling,TRUE,FALSE
+forecasting,Modeling,TRUE,FALSE
+analytics,Data analysis,TRUE,FALSE
+data analysis,Data analysis,TRUE,FALSE
+data science,Data analysis,TRUE,FALSE
+data mining,Data analysis,TRUE,FALSE
+machine learning,Data analysis,TRUE,FALSE
+Excel,Software,TRUE,FALSE
+spreadsheet,Software,TRUE,FALSE
+spreadsheets,Software,TRUE,FALSE
+R,Software,TRUE,TRUE
+Python,Software,TRUE,FALSE
+GIS,Software,TRUE,TRUE
